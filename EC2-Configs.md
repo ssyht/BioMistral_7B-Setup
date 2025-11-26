@@ -16,23 +16,32 @@ Why this one? The A10G GPU is the modern standard for 7B models. The older g4dn 
 
 ## The Storage (The "Hard Drive")
 
-**Bioinformatics datasets are large, and model checkpoints (saves) take up massive space. Do not use the default 8GB root volume.**
+(i) **Bioinformatics datasets are large, and model checkpoints (saves) take up massive space. Do not use the default 8GB root volume.**
 
-**Root Volume**: 100 GB gp3 (General Purpose SSD)
+(ii) **Root Volume**: 100 GB gp3 (General Purpose SSD)
 
-**Why**: To hold the OS, Docker images, and Python libraries.
+(iii) **Why**: To hold the OS, Docker images, and Python libraries.
 
-**Data Volume (Separate)**: 500 GB gp3
+(iv) **Data Volume (Separate)**: 500 GB gp3
 
-**Why**: Mount this at /data. Download your PGP datasets here. If you terminate the instance to save money, you can detach this volume and keep your data safe.
+(v) **Why**: Mount this at /data. Download your PGP datasets here. If you terminate the instance to save money, you can detach this volume and keep your data safe.
 
 ## The Operating System (The "AMI")
 
-**Do not install Ubuntu "vanilla" and try to install NVIDIA drivers yourself (it is a nightmare). Use the pre-configured AWS image.**
+(i) **Do not install Ubuntu "vanilla" and try to install NVIDIA drivers yourself (it is a nightmare). Use the pre-configured AWS image.**
 
-**AMI Name**: Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.x (Ubuntu 22.04)
+(ii) **AMI Name**: Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.x (Ubuntu 22.04)
 
-**Search for**: "Deep Learning AMI" in the AWS launch wizard.
+(iii) **Search for**: "Deep Learning AMI" in the AWS launch wizard.
 
-**Why**: It comes with CUDA, cuDNN, Docker, and NVIDIA Drivers pre-installed and tested.
+(iv) **Why**: It comes with CUDA, cuDNN, Docker, and NVIDIA Drivers pre-installed and tested.
 
+## Security Group (The "Firewall")
+
+**You need to open specific ports to access the Chat UI and the Training UI from your browser.**
+
+(i) **Allow SSH (Port 22)**: From My IP (for your terminal access).
+
+(ii) **Allow Custom TCP (Port 7860)**: From My IP (for LLaMA-Factory Training UI).
+
+(iii) **Allow Custom TCP (Port 3000)**: From My IP (for Open WebUI Chat Interface).
