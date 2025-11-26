@@ -13,3 +13,15 @@ docker run -d --gpus all \
   ollama/ollama
 ```
 
+**Step 2: Pull & Run the Model**
+
+Once the container is running (it takes about 2 seconds to start), retry the command you were using:
+
+```bash
+docker exec -it ollama ollama run cniongolo/biomistral
+```
+
+What you will see: It will start downloading the BioMistral model layers (this might take a few minutes).
+
+**Success**: Once finished, you will see a >>> prompt. You can then start typing your medical questions to test the raw model.
+
